@@ -1,27 +1,30 @@
 package attacks;
 
+import characters.enemies.*;
+import characters.player.*;
+
 public class Attack {
     private String attackName;
     private double attackPower;
     private String attackEffect;
-    private String position;
+    private String attackType;
    
-    public Attack(String attackName, double attackPower, String position) {
+    public Attack(String attackName, double attackPower, String attackType) {
         this.attackName = attackName;
         this.attackPower = attackPower;
-        this.position = position;
+        this.attackType=attackType;
     }
 
-    public Attack(String attackName, double attackPower, String attackEffect, String position) {
-        this(attackName, attackPower, position);
+    public Attack(String attackName, String attackType, double attackPower, String attackEffect) {
+        this(attackName, attackPower, attackType);
         this.attackEffect = attackEffect;
     }
 
-    boolean hasMissed(){
-        return (Math.random()<0.10);
+    public String getAttackType(){
+        return attackType;
     }
 
-    boolean isCrit(){
+    boolean hasMissed(){
         return (Math.random()<0.10);
     }
 
@@ -31,14 +34,30 @@ public class Attack {
         return Math.random()<0.10;
     }
 
-    double calculateDamage(Attack attack,double strength, double range, double damageMultiplier){}
+    double calculateDamage(double strength, double distance, double damageMultiplier){
+        if(attackType="Light"){}
+        else if(attackType="Heavy"){}
+        else if(attackType="Spell"){}
+        else if(attackType="Ultimate"){}
+    }
 
-    double adjustPosition(double initialPosition, double changedPosition){}
+    public String getAttackName(){
+        return attackName;
+    }
+
+    double adjustPosition(double initialPosition, double distance){
+        return initialPosition+distance;
+    }
 
     boolean isBlocked(){
         return (Math.random()<0.80);
     }
 
-    String getAttackEffect(){}
+    public void performAttack(Player player, Enemy target){
+        if(attackType=="Light"){}
+        else if(attackType=="Heavy"){}
+        else if(attackType=="Spell"){}
+        else if(attackType=="Ultimate"){}
+    }
 
 }
