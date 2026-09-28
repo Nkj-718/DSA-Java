@@ -11,7 +11,6 @@ public class Game {
         
         System.out.print("Enter your name: ");
         String playerName=sc.next();
-        
         System.out.println("Select your Character Class: ");
         System.out.println("1. Rogue");
         System.out.println("2. Barbarian");
