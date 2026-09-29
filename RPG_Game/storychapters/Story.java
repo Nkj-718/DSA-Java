@@ -1,4 +1,4 @@
-package story;
+package storychapters;
 
 public class Story {
     
