@@ -20,7 +20,7 @@ public class Barbarian extends Player{
     void assignAttacks(){
         attacks[0]=new Attack("Savage Swing", "Light", 40, "Stagger");
         attacks[1]=new Attack("Earthshatter", "Heavy", 70, "Stagger");
-        attacks[2]=new Attack("Shockwave", "Spell", 30, "None");
-        attacks[3]=new Attack("Ultimate: Worldbreaker", "Ultimate", 150, "Boost");
+        attacks[2]=new Attack("Blind Rush", "Spell", 20, "Attack-Boost");
+        attacks[3]=new Attack("Ultimate: Worldbreaker", "Ultimate", 250, "None");
     }
 }

@@ -3,10 +3,10 @@ package characters.enemies;
 import attacks.Attack;
 import characters.player.Player;
 
-class Archer extends Enemy{
+public class Archer extends Enemy{
     private Attack[] attacks=new Attack[1];
 
-    Archer(){
+    public Archer(){
         super();
         health=50;
         strength=25;
@@ -14,42 +14,37 @@ class Archer extends Enemy{
         speed=25;
         endurance=20;
         reward=1;
-        enemyPosition=6;
+        position=6;
     }
 
     @Override 
     void assignAttacks(){
-        attacks[0]=new Attack("Arrow Barrage", 25, "Damage");
+        attacks[0]=new Attack("Arrow Barrage","Heavy", 25, "None");
     }
 
     @Override 
     public void chooseAction(Player player){
         //1. Attack     2. Move Closer      3. Move Away
-        double distance=calculateDistance(player.getPlayerPosition());
+        int distance=calculateDistance(player.getPosition());
         if(distance<4){
             if(Math.random()<0.30){
-                performAttack(attacks[0], player);
+                attacks[0].performAttack(this, player);
             }
             else{
-                enemyPosition+=5;
+                position+=5;
             }
         }
         else if(distance>=4 && distance<15){
             if(Math.random()<0.80){
-                performAttack(attacks[0], player);
+                attacks[0].performAttack(this, player);
             }
             else{
-                enemyPosition+=5;
+                position+=5;
             }
         }
         else{
-            enemyPosition-=5;
+            position-=5;
         }
-    }
-
-    @Override 
-    void performAttack(Attack attack, Player player){
-        super.performAttack(attack, player);
     }
 
 }

@@ -1,4 +1,4 @@
-package storychapters;
+package story;
 
 public class Chapter1 extends Story{
     

@@ -4,11 +4,11 @@ import attacks.Attack;
 import characters.player.*;
 import java.util.Random;
 
-class Cleric extends Enemy{
+public class Cleric extends Enemy{
     private Attack[] attacks=new Attack[2];
     Random random=new Random();
 
-    Cleric(){
+    public Cleric(){
         super();
         health=50;
         strength=0;
@@ -16,13 +16,13 @@ class Cleric extends Enemy{
         speed=30;
         endurance=20;
         reward=1;
-        enemyPosition=5;
+        position=5;
     }
 
     @Override 
     void assignAttacks(){
-        attacks[0]=new Attack("Healing Spell", 40, "Heal");
-        attacks[1]=new Attack("Damage Boost", 1.5, "Buff");
+        attacks[0]=new Attack("Healing Spell", "Spell", 0, "Heal");
+        attacks[1]=new Attack("Damage Boost", "Spell", 0, "Attack-Boost");
     }
 
     @Override 
@@ -31,7 +31,7 @@ class Cleric extends Enemy{
         //Perform either attacks[0](Healing Spell-25%), attacks[1](Damage Boost-25%), or Move away(50%)
         if(distance<6){
             if(Math.random()<0.50){
-                enemyPosition+=4;
+                position+=4;
             }
             else{
                 performAttack(enemies, attacks[random.nextInt(2)], player);
@@ -41,26 +41,15 @@ class Cleric extends Enemy{
         else{
             double value=Math.random();
             if(value<0.40){
-                performAttack(enemies, attacks[1], player);
+                attacks[1].performAttack(enemies, player);
             }
             else if(value>=0.40 && value<0.70){
                 performAttack(enemies, attacks[0], player);
             }
             else{
-                enemyPosition+=4;
+                position+=4;
             }
         }
     }
-
-    void performAttack(Enemy[] enemies, Attack attack, Player player){
-        super.performAttack(attack, player);
-        if(attack.getAttackType()=="Heal"){
-            enemies[random.nextInt(enemies.length)].healHealth();
-        }
-        else if(attack.getAttackType()=="Buff"){
-            enemies[random.nextInt(enemies.length)].increaseDamageMultiplier(1.5);
-        }
-    }
-
 
 }

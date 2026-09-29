@@ -1,8 +1,9 @@
 import attacks.*;
 import characters.player.*;
 import characters.enemies.*;
-import story.*;
 import fights.*;
+import story.*;
+
 import java.util.Scanner;
 
 public class Game {

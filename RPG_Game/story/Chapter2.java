@@ -1,11 +1,11 @@
-package storychapters;
+package story;
 
-public class Chapter5 extends Story{
+public class Chapter2 extends Story{
 
     @Override
     public void startStory(){
         System.out.println();
-        System.out.println("Story Chapter 5 Here.");
+        System.out.println("Story Chapter 2 Here.");
         System.out.println();
     }
     

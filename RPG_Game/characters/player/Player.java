@@ -1,25 +1,18 @@
 package characters.player;
 
 import java.util.Scanner;
-
 import attacks.Attack;
+import characters.GameCharacter;
 
-public class Player {
-    protected double health;
-    protected double strength;
-    protected double speed;
-    protected int mana;
-    protected double endurance;
-    protected int playerPosition;
+public class Player extends GameCharacter{
     protected String weapon;
     protected String attackEffect;
     protected double boost;
     protected Attack[] attacks=new Attack[4];
-    protected boolean isShielded;
     private int distance;
 
     public Player(){
-        playerPosition=0;
+        position=0;
         boost=1;
         isShielded=false;
     }
@@ -40,12 +33,9 @@ public class Player {
         boost*=1.5;
     }
 
-    void setPlayerPosition(int distance){
-        playerPosition-=distance;
-    }
-
-    public double getPlayerPosition(){
-        return playerPosition;
+    @Override 
+    void setPosition(int distance){
+        position-=distance;
     }
 
     void assignAttacks(){}
@@ -59,8 +49,6 @@ public class Player {
         int attack=sc.nextInt();
         attacks[attack-1].performAttack(this, target);
     }
-
-    performAttack()
 
     public void setHealth(double damage){
         health-=damage;
@@ -78,7 +66,7 @@ public class Player {
         int choice=sc.nextInt();
         switch(choice){
             case 1:
-                AttackMenu(sc);
+                attackMenu(sc);
                 break;
             case 2:
                 if(Math.random()<80)
@@ -89,20 +77,18 @@ public class Player {
             case 3:
                 System.out.print("How much distance to cover(1m = 1 AP): ");
                 distance=sc.nextInt();
-                setPlayerPosition(distance);
+                setPosition(distance);
                 break;
             case 4:
                 System.out.print("How much distance to cover(1m = 1 AP): ");
                 distance=sc.nextInt();
-                setPlayerPosition(-distance);
+                setPosition(-distance);
                 break;
             default:
                 System.out.println("Invalid! Choose Again.");
                 chooseAction(sc);
         }
     }
-
-    //void performAttack(String attackName, String type, int strength, int mana){}
 
     void increaseStat(int stat){
         switch(stat){

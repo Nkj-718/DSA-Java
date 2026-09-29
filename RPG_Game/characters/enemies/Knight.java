@@ -8,36 +8,31 @@ public class Knight extends Enemy{
 
     public Knight(){
         super();
-        enemyName="Knight";
+        name="Knight";
         health=50;
         strength=20;
         mana=0;
         speed=25;
         endurance=30;
         reward=1;
-        enemyPosition=3;
+        position=3;
     }
 
     @Override
     void assignAttacks(){
-        attacks[0]=new Attack("Sword Sweep", 20, "Damage");
+        attacks[0]=new Attack("Sword Sweep","Heavy", 20, "None");
     }
 
     @Override 
     public void chooseAction(Player player){
         //1. Attack     2. Move Closer
-        double distance=calculateDistance(player.getPlayerPosition());
+        int distance=calculateDistance(player.getPosition());
         if(distance<4){
-            performAttack(attacks[0], player);
+            attacks[0].performAttack(this, player);
         }
         else{
-            enemyPosition-=4;
+            position-=4;
         }
-    }
-
-    @Override 
-    void performAttack(Attack attack, Player player){
-        super.performAttack(attack, player);
     }
 
 }
