@@ -11,15 +11,15 @@ public class Knight extends Enemy{
         name="Knight";
         health=50;
         strength=20;
-        mana=0;
         speed=25;
         endurance=30;
-        reward=1;
+        reward=10;
         position=3;
+        assignAttacks();
     }
 
     @Override
-    void assignAttacks(){
+    protected void assignAttacks(){
         attacks[0]=new Attack("Sword Sweep","Heavy", 20, "None");
     }
 

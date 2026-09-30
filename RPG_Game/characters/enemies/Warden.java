@@ -8,17 +8,18 @@ public class Warden extends Enemy{
 
     public Warden(){
         super();
+        name="Warden";
         health=100;
         strength=35;
-        mana=0;
         speed=20;
         endurance=50;
-        reward=2;
+        reward=25;
         position=4;
+        assignAttacks();
     }
 
     @Override 
-    void assignAttacks(){
+    protected void assignAttacks(){
         attacks[0]=new Attack("Axe Hammer", "Heavy", 40, "None");
         attacks[1]=new Attack("Boulder Throw", "Heavy", 30, "None");
     }

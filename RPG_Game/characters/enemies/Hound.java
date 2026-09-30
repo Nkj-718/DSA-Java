@@ -8,17 +8,18 @@ public class Hound extends Enemy{
 
     public Hound(){
         super();
+        name="Hound of the Baron";
         health=200;
         strength=50;
-        mana=20;
         speed=40;
         endurance=80;
-        reward=5;
+        reward=50;
         position=5;
+        assignAttacks();
     }
 
     @Override 
-    void assignAttacks(){
+    protected void assignAttacks(){
         attacks[0]=new Attack("Bite", "Heavy", 60, "None");
         attacks[1]=new Attack("Fear Manifest", "Light", 20, "Attack-Boost");
         attacks[2]=new Attack("Howl", "Spell", 0, "Attack-Boost");

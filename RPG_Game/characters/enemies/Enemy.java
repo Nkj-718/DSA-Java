@@ -15,15 +15,15 @@ public class Enemy extends GameCharacter{
         isStunned=false;
     }
 
-    int calculateDistance(int playerPosition){
-        return position-playerPosition;
+    public int giveReward(){
+        return reward;
     }
 
-    public void chooseAction(Player player){};
+    int calculateDistance(int playerPosition){
+        return Math.abs(position-playerPosition);
+    }
 
-    public void chooseAction(Enemy[] enemies, Player player){};
-
-    void assignAttacks(){}
+    protected void assignAttacks(){}
 
     public void stunEnemy(){
         if(Math.random()<0.15)

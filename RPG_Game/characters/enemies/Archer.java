@@ -8,17 +8,18 @@ public class Archer extends Enemy{
 
     public Archer(){
         super();
+        name="Archer";
         health=50;
         strength=25;
-        mana=0;
         speed=25;
         endurance=20;
-        reward=1;
+        reward=10;
         position=6;
+        assignAttacks();
     }
 
     @Override 
-    void assignAttacks(){
+    protected void assignAttacks(){
         attacks[0]=new Attack("Arrow Barrage","Heavy", 25, "None");
     }
 
