@@ -1,10 +1,12 @@
 package characters;
 
+import characters.enemies.Enemy;
+import characters.player.Player;
+
 public class GameCharacter {
     protected String name;
     protected double health;
     protected double strength;
-    protected int attackPoints;
     protected double speed;
     protected double endurance;
     protected boolean isShielded;
@@ -17,11 +19,16 @@ public class GameCharacter {
         isShielded=false;
         damageMultiplier=1;
         critChance=0.10;
+        isStunned=false;
     }
 
-    protected void chooseAction(){}
+    protected void assignAttacks(){}
 
-    public void setPosition(int distance){}
+    public void chooseAction(Player player){}
+
+    public void chooseAction(Enemy[] enemies, Player player){}
+
+    public void setPosition(String direction){}
 
     public int getPosition(){
         return position;
@@ -35,12 +42,20 @@ public class GameCharacter {
         this.health += health;
     }
 
-    public void setStrength(double strength) {
-        this.strength *= strength;
+    public void increaseStrengthStat(double strength){
+        this.strength+=strength;
     }
 
-    public void setAttackPoints(int attackPoints) {
-        this.attackPoints += attackPoints;
+    public void increaseSpeedStat(double speed){
+        this.speed+=speed;
+    }
+
+    public void increaseEnduranceStat(double endurance){
+        this.endurance+=endurance;
+    }
+
+    public void setStrength(double strength) {
+        this.strength *= strength;
     }
 
     public void setSpeed(double speed) {
@@ -67,8 +82,12 @@ public class GameCharacter {
         return strength;
     }
 
-    public int getAttackPoints() {
-        return attackPoints;
+    public void setStun(boolean isStunned){
+        this.isStunned=isStunned;
+    }
+
+    public boolean isStunned(){
+        return isStunned;
     }
 
     public double getSpeed() {
@@ -84,7 +103,15 @@ public class GameCharacter {
     }
 
     public void setDamageMultiplier(double damageMultiplier){
-        this.damageMultiplier*=damageMultiplier;
+        this.damageMultiplier+=damageMultiplier;
+    }
+
+    public double getDamageMultiplier(){
+        return damageMultiplier;
+    }
+
+    public double getCritChance(){
+        return critChance;
     }
 
     public void boostCritChance(){
@@ -97,7 +124,5 @@ public class GameCharacter {
         else
             isStunned=false;
     }
-
-    public void resetTemporaryBuffs(){}
 
 }
