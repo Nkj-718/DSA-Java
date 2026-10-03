@@ -1,25 +1,19 @@
 package users;
 
 import java.util.Scanner;
+import quizService.QuizService;
 
 public class Admin extends User{
 
-    public Admin(String userName){
-        super(userName);
+    public Admin(QuizService quiz, String userName){
+        super(quiz, userName);
     }
-    
-    public void makeQuestion(){}
-
-    public void chooseQuestion(){}
-
-    public void editQuestion(){}
 
     @Override 
     public void showMenu(Scanner sc){
         int choice;
         while(true){
 
-            do{
                 System.out.println("What Action do you want to perform?");
                 System.out.println("1. Make a Question.     2. Edit a Question     3. Go Back");
                 System.out.print("Action: ");
@@ -27,10 +21,10 @@ public class Admin extends User{
 
                 switch(choice){
                     case 1: 
-                        makeQuestion();
+                        quiz.addQuestion(sc);
                         break;
                     case 2:
-                        editQuestion();
+                        quiz.editQuestion(sc);
                         break;
                     case 3:
                         System.out.println("Returning back to User Menu...");
@@ -38,8 +32,6 @@ public class Admin extends User{
                     default:
                         System.out.println("Invalid Action! Please try again.");
                 }
-
-            }while(choice<1 || choice>3);
         
         }
     }
