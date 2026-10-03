@@ -3,12 +3,11 @@ package questions;
 public class Question {
     private String question;
     private String[] options=new String[4];
-    private String correctOption;
+    private int correctOption;
     private int marks;
     private int penalty;
-    private String questionMaker;
 
-    public Question(String question, String[] options, String correctOption, int marks, int penalty){
+    public Question(String question, String[] options, int correctOption, int marks, int penalty){
         this.question=question;
         this.options=options;
         this.correctOption=correctOption;
@@ -55,12 +54,20 @@ public class Question {
     public String getOption4(){
         return options[3];
     }
+
+    public String[] getOptions(){
+        return options;
+    }
+
+    public String getOptionsString(){
+        return "[ " + options[0] + ", " + options[1] + ", " + options[2] + ", " + options[3] + " ]";
+    }
     
-    public void setCorrectOption(String correctOption) {
+    public void setCorrectOption(int correctOption) {
         this.correctOption=correctOption;
     }
     
-    public String getCorrectOption(){
+    public int getCorrectOption(){
         return correctOption;
     }
     
@@ -78,14 +85,6 @@ public class Question {
 
     public int getPenalty(){
         return penalty;
-    }
-
-    public void setQuestionMaker(String questionMaker){
-        this.questionMaker=questionMaker;
-    }
-
-    public String getQuestionMaker(){
-        return questionMaker;
     }
 
 }
