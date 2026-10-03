@@ -1,33 +1,27 @@
 package users;
 
 import java.util.Scanner;
-import questions.Question;
+import quizService.QuizService;
 
 public class Player extends User{
     private int playerScore;
 
-    public Player(String userName){
-        super(userName);
+    public Player(QuizService quiz, String userName){
+        super(quiz, userName);
         playerScore=0;
+    }
+
+    public void updatePlayerScore(int points, String pointType){
+        if("Reward".equals(pointType)){
+            playerScore+=points;
+        }
+        else if("Penalty".equals(pointType)){
+            playerScore-=points;
+        }
     }
 
     public int getPlayerScore(){
         return playerScore;
-    }
-
-    public void playQuiz(Question[] questions, Scanner sc){
-        int i=0;
-        for(Question question : questions){
-            System.out.println("Question " + (++i) + ": " + question.getQuestion());
-            System.out.println("A. " + question.getOption1() + "    B. " + question.getOption2());
-            System.out.println("C. " + question.getOption3() + "    D. " + question.getOption4());
-            System.out.print("Answer: ");
-            String userAnswer=sc.nextLine();
-            if( checkAnswer(userAnswer, question.getCorrectOption()) )
-                playerScore+=4;
-            else
-                playerScore-=1;
-        }
     }
 
     @Override 
@@ -35,18 +29,17 @@ public class Player extends User{
         int choice;
         while(true){
 
-            do{
-                System.out.println("What Action do you want to perform?");
+                System.out.println("\nWhat Action do you want to perform?");
                 System.out.println("1. Play Quiz.     2. Check Score     3. Go Back");
                 System.out.print("Action: ");
                 choice=sc.nextInt();
 
                 switch(choice){
                     case 1: 
-                        playQuiz(sc);
+                        quiz.playQuiz(this, sc);
                         break;
                     case 2:
-                        System.out.println("Your [" + getUserName() + "] Score is: " + getPlayerScore());;
+                        System.out.println("Your [" + getUserName() + "] Score is: " + getPlayerScore());
                         break;
                     case 3:
                         System.out.println("Returning back to User Menu...");
@@ -54,15 +47,9 @@ public class Player extends User{
                     default:
                         System.out.println("Invalid Action! Please try again.");
                 }
-
-            }while(choice<1 || choice>3);
         
         }
 
-    }
-
-    private boolean checkAnswer(String userAnswer, String correctAnswer){
-        return (userAnswer.toLowerCase()).equals(correctAnswer.toLowerCase());
     }
     
 
