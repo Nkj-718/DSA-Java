@@ -9,18 +9,18 @@ public class Knight extends Enemy{
     public Knight(){
         super();
         name="Knight";
-        health=50;
-        strength=20;
-        speed=25;
-        endurance=30;
+        health=150;
+        strength=25;
+        speed=40;
+        endurance=35;
         reward=10;
-        position=3;
+        position=4;
         assignAttacks();
     }
 
     @Override
     protected void assignAttacks(){
-        attacks[0]=new Attack("Sword Sweep","Heavy", 20, "None");
+        attacks[0]=new Attack("Sword Sweep","Heavy", 25, "None");
     }
 
     @Override 
@@ -31,8 +31,8 @@ public class Knight extends Enemy{
             attacks[0].performAttack(this, player);
         }
         else{
-            position-=4;
+            position-=3;
+            System.out.println(getName() + " moved closer.");
         }
     }
-
 }

@@ -9,12 +9,12 @@ public class Archer extends Enemy{
     public Archer(){
         super();
         name="Archer";
-        health=50;
-        strength=25;
-        speed=25;
-        endurance=20;
+        health=100;
+        strength=20;
+        speed=50;
+        endurance=25;
         reward=10;
-        position=6;
+        position=10;
         assignAttacks();
     }
 
@@ -33,6 +33,7 @@ public class Archer extends Enemy{
             }
             else{
                 position+=5;
+                System.out.println(getName() + " moved away.");
             }
         }
         else if(distance>=4 && distance<15){
@@ -41,11 +42,12 @@ public class Archer extends Enemy{
             }
             else{
                 position+=5;
+                System.out.println(getName() + " moved away.");
             }
         }
         else{
             position-=5;
+            System.out.println(getName() + " moved closer.");
         }
     }
-
 }

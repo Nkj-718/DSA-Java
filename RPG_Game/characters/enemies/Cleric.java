@@ -11,12 +11,12 @@ public class Cleric extends Enemy{
     public Cleric(){
         super();
         name="Cleric";
-        health=50;
+        health=80;
         strength=0;
-        speed=30;
-        endurance=20;
+        speed=45;
+        endurance=25;
         reward=10;
-        position=5;
+        position=8;
         assignAttacks();
     }
 
@@ -29,26 +29,29 @@ public class Cleric extends Enemy{
     @Override 
     public void chooseAction(Enemy[] enemies, Player player){
         double distance=calculateDistance(player.getPosition());
+
         //Perform either attacks[0](Healing Spell-25%), attacks[1](Damage Boost-25%), or Move away(50%)
         if(distance<6){
             if(Math.random()<0.50){
-                position+=4;
+                position+=5;
             }
             else{
-                attacks[random.nextInt(2)].performAttack(enemies);
+                attacks[random.nextInt(2)].performAttack(this, enemies);
             }
         }
+
         //Either Perform attacks[0](Healing Spell-30%), attacks[1](Damage Boost-40%), or Move Away(20%)
         else{
             double value=Math.random();
+
             if(value<0.40){
-                attacks[1].performAttack(enemies);
+                attacks[1].performAttack(this, enemies);
             }
             else if(value>=0.40 && value<0.70){
-                attacks[0].performAttack(enemies);
+                attacks[0].performAttack(this, enemies);
             }
             else{
-                position+=4;
+                position+=5;
             }
         }
     }

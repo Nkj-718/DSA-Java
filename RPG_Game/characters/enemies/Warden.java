@@ -9,18 +9,18 @@ public class Warden extends Enemy{
     public Warden(){
         super();
         name="Warden";
-        health=100;
-        strength=35;
-        speed=20;
+        health=200;
+        strength=30;
+        speed=35;
         endurance=50;
-        reward=25;
-        position=4;
+        reward=20;
+        position=5;
         assignAttacks();
     }
 
     @Override 
     protected void assignAttacks(){
-        attacks[0]=new Attack("Axe Hammer", "Heavy", 40, "None");
+        attacks[0]=new Attack("Axe Hammer", "Heavy", 35, "Stagger");
         attacks[1]=new Attack("Boulder Throw", "Heavy", 30, "None");
     }
 
@@ -32,24 +32,32 @@ public class Warden extends Enemy{
             double value=Math.random();
             if(value<0.70)
                 attacks[0].performAttack(this, player);
-            else if(value>=0.70 && value<0.85)
-                position+=4;
-            else
-                position-=4;
+            else if(value>=0.70 && value<0.85){
+                position+=3;
+                System.out.println(getName() + " moved away.");
+            }
+            else{
+                position-=3;
+                System.out.println(getName() + " moved closer.");
+            }
         }
         //Perform either attacks[1](Boulder Throw-70%),move away(5%), or move closer(25%)
-        else if(distance>=5 && distance<15){
+        else if(distance>=5 && distance<10){
             double value=Math.random();
             if(value<0.70)
                 attacks[1].performAttack(this, player);
-            else if(value>=0.70 && value<0.75)
-                position+=4;
-            else
-                position-=4;
+            else if(value>=0.70 && value<0.75){
+                position+=3;
+                System.out.println(getName() + " moved away.");
+            }
+            else{
+                position-=3;
+                System.out.println(getName() + " moved closer.");
+            }
         }
         else{
-            position-=4;
+            position-=3;
+            System.out.println(getName() + " moved closer.");
         }
     }
-
 }

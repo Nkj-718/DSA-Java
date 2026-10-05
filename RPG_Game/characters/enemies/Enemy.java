@@ -25,13 +25,6 @@ public class Enemy extends GameCharacter{
 
     protected void assignAttacks(){}
 
-    public void stunEnemy(){
-        if(Math.random()<0.15)
-            isStunned=true;
-        else
-            isStunned=false;
-    }
-
     public void chooseAction(){}
 
 }
