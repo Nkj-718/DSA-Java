@@ -19,6 +19,8 @@ public class Game {
             System.out.println("2. Barbarian");
             System.out.println("3. Duelist");
             System.out.println("4. Swordsman");
+            System.out.println();
+            System.out.print("Character: ");
             classSelect = sc.nextInt();
 
             if (classSelect < 1 || classSelect > 4)
@@ -41,6 +43,7 @@ public class Game {
                 player = new Swordsman();
                 break;
         }
+        player.setName(playerName);
 
         Story[] chapters = new Story[9];
         chapters[0] = new Chapter1();
@@ -65,7 +68,7 @@ public class Game {
 
         for (int i = 0; i < fights.length; i++) {
             System.out.println("-------- Chapter " + (i + 1) + " --------");
-            chapters[i].startStory();
+            chapters[i].startStory(player, sc);
 
             player.savePlayer();
 
@@ -77,7 +80,6 @@ public class Game {
 
             if (!levelFinish) {
                 System.out.println("Attempt Failed! Booting up the level again...");
-                player.penalty();
 
                 switch (i) {
                     case 0:
@@ -111,6 +113,7 @@ public class Game {
                 System.out.println("-------- Chapter " + (i + 1) + " completed! --------");
             }
             
+            System.out.println("-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x--x-x-x-x-x-x-x-x-");
             System.out.println("Do you want to use the rewarded points to adjust your stats?");
             System.out.println("1.Yes");
             System.out.print("Adjust Points?: ");
@@ -122,7 +125,7 @@ public class Game {
         }
 
         System.out.println("-------- Chapter 9 --------");
-        chapters[8].startStory();
+        chapters[8].startStory(player, sc);
         System.out.println("-------- Chapter 9 completed! --------");
         System.out.println("-x-x-x-x-x-x-x-x- THANK YOU FOR PLAYING! -x-x-x-x-x-x-x-x-");
 
