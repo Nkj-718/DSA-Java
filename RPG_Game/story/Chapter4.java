@@ -518,6 +518,7 @@ public class Chapter4 extends Story{
         System.out.println("                    FIGHT 4");
         System.out.println("==================================================");
         System.out.println();
+        
     }
     
 }
