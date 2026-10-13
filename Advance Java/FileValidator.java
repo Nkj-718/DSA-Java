@@ -23,6 +23,8 @@ class FileValidator {
 
         String file1="notes.txt";
         String file2="Main.java";
+        
+        System.out.println("Welcome to File Validator!");
 
         System.out.println("Text Validator:");
         System.out.println(file1 + " : " + textValidator.isValid(file1));
