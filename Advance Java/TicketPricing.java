@@ -14,6 +14,7 @@ enum TicketType{
 
 class TicketPricing {
     public static void main(String[] args) {
+        
         TicketType ticket=TicketType.SENIOR;
 
         System.out.println(ticket.name() + ": $" + ticket.getPrice());
